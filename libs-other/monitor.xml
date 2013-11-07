@@ -1,0 +1,32 @@
+<monitor>
+	<name>MysqlMonitor</name>
+	<type>managed</type>
+	<description>Monitors Mysql database system</description>
+	<monitor-configuration>
+	</monitor-configuration>
+	<monitor-run-task>
+		<execution-style>periodic</execution-style>
+		<execution-frequency-in-seconds>60</execution-frequency-in-seconds>
+		<name>Mysql Monitor Run Task</name>
+		<display-name>Mysql Monitor Task</display-name>
+		<description>Mysql Monitor Task</description>
+		<type>java</type>
+		<execution-timeout-in-secs>60</execution-timeout-in-secs>
+		<task-arguments>
+			<argument name="host" is-required="true" default-value="localhost" />
+			<argument name="port" is-required="true" default-value="3306" />		
+			<argument name="user" is-required="true" default-value="root" />
+			<argument name="password" is-required="true" default-value="welcome" />
+			
+			<!-- 
+				The tier under which the metrics should appear in the metric browser.
+				If this argument is left out then the metrics will be registered in every tier.
+			-->
+			<argument name="tier" is-required="false" default-value="1stTier" />			
+		</task-arguments>
+		<java-task>
+			<classpath>mysql.jar;mysql-connector-java-5.1.17-bin.jar</classpath>
+			<impl-class>com.singularity.ee.agent.systemagent.monitors.database.mysql.MysqlMonitor</impl-class>
+		</java-task>
+	</monitor-run-task>
+</monitor>

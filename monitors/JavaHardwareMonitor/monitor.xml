@@ -1,0 +1,19 @@
+<monitor>
+    <name>SigarHardwareMonitor</name>
+    <type>managed</type>
+    <enabled>true</enabled>
+    <enable-override os-type="solaris">false</enable-override>
+    <description>Monitors system resources - CPU, Memory, Network I/O, and Disk I/O, Disk Space.
+    </description>
+    <monitor-configuration>
+    </monitor-configuration>
+    <monitor-run-task>
+        <type>java</type>
+        <execution-style>scheduled</execution-style>
+        <java-task>
+            <impl-class>internal.hardware.monitor</impl-class>
+            <factory-method></factory-method>
+            <invoke-method></invoke-method>
+        </java-task>
+    </monitor-run-task>
+</monitor>

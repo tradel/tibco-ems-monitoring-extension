@@ -1,0 +1,10 @@
+<config>
+    <disk aggregate="false" enabled="false">devfs</disk>
+    <disk aggregate="true" enabled="true">/dev/disk0s2</disk>
+    <network aggregate="true" enabled="false">lo0</network>
+    <network aggregate="true" enabled="false">p2p0</network>
+    <network aggregate="true" enabled="true">vmnet1</network>
+    <network aggregate="true" enabled="false">en0</network>
+    <network aggregate="true" enabled="true">en1</network>
+    <network aggregate="true" enabled="true">vmnet8</network>
+</config>

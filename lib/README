@@ -1,0 +1,1 @@
+Ant task execution complains that the tools.jar is missing. We have added an empty tools.jar to suppress these warning messages from appearing in the task execution output.

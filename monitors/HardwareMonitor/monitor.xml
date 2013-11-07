@@ -1,0 +1,27 @@
+<monitor>
+    <name>HardwareMonitor</name>
+    <type>managed</type>
+    <enabled>false</enabled>
+    <enable-override os-type="solaris">true</enable-override>
+    <enable-override os-type="sunos">true</enable-override>
+    <description>Monitors system resources - CPU, Memory, Network I/O, and Disk I/O.
+    </description>
+    <monitor-configuration>
+    </monitor-configuration>
+    <monitor-run-task>
+        <execution-style>continuous</execution-style>
+        <name>Run</name>
+        <type>executable</type>
+        <task-arguments>
+        </task-arguments>
+        <executable-task>
+            <type>file</type>
+            <file os-type="linux">linux-stat.sh</file>
+            <file os-type="mac">macos-stat.sh</file>
+            <file os-type="windows">windows-stat.bat</file>
+            <file os-type="solaris">solaris-stat2.sh</file>
+            <file os-type="sunos">solaris-stat2.sh</file>
+            <file os-type="aix">aix-stat.sh</file>
+        </executable-task>
+    </monitor-run-task>
+</monitor>

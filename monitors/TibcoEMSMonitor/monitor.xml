@@ -1,0 +1,40 @@
+<monitor>
+	<name>TibcoEMSMonitorMonitor</name>
+	<type>managed</type>
+	<description>Monitors Tibco EMS</description>
+	<monitor-configuration>
+	</monitor-configuration>
+	<monitor-run-task>
+		<execution-style>periodic</execution-style>
+		<execution-frequency-in-seconds>60</execution-frequency-in-seconds>
+		<name>Tibco EMS Monitor Run Task</name>
+		<display-name>Tibco EMS Monitor Task</display-name>
+		<description>Tibco EMS Task</description>
+		<type>java</type>
+		<execution-timeout-in-secs>60</execution-timeout-in-secs>
+		
+		<!--  
+		
+		Admin EMS for Hawk EMS Destinations GTIC : tcp://tparhetibu027.nielsen.com:57223
+		CLE : tcp://tparhetibu027.nielsen.com:57225
+		AOD App EMS :tcp://tparhetibu034.nielsen.com:57222
+		
+		
+		 -->
+		
+		<task-arguments>
+			<argument name="hostname" is-required="true" default-value="hughsmac" />
+			<argument name="port" is-required="true" default-value="7222" />		
+			<argument name="userid" is-required="true" default-value="admin" />
+			<argument name="password" is-required="true" default-value="admin" />
+			<!--argument name="tier" is-required="false" default-value="TIBCOEMS" /-->	
+			<argument name="showTempQueues" is-required="false" default-value="FALSE" />	
+			<argument name="showSysQueues" is-required="false" default-value="TRUE" />	
+			<argument name="emsservername" is-required="false" default-value="Tibco EMS Hughes Mac" />	
+		</task-arguments>
+		<java-task>
+			 <classpath>../../bin:../../lib/mysql.jar:../../machineagent.jar:../../lib/jms.jar:../../lib-tibco/slf4j-api-1.4.2.jar:../../lib-tibco/slf4j-simple-1.4.2.jar:../../lib-tibco/tibcrypt.jar:../../lib-tibco/tibemsd_sec.jar:../../lib-tibco/tibjms.jar:../../lib-tibco/tibjmsadmin.jar:../../lib-tibco/tibjmsapps.jar:../../lib-tibco/tibjmsufo.jar:../../lib-tibco/tibrvjms.jar</classpath>
+			<impl-class>com.singularity.ee.agent.systemagent.monitors.common.TibcoEMSMonitor3</impl-class>
+		</java-task>
+	</monitor-run-task>
+</monitor>
