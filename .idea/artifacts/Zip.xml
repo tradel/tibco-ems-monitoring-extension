@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact name="Zip">
+    <output-path>$PROJECT_DIR$/bin/artifacts/Zip</output-path>
+    <root id="root">
+      <element id="archive" name="TibcoEMSMonitor-2.1.1.zip">
+        <element id="archive" name="TibcoEMSMonitor.jar">
+          <element id="module-output" name="TibcoEMSMonitor" />
+        </element>
+        <element id="file-copy" path="$PROJECT_DIR$/README.md" />
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="lib-jms" />
+          <element id="library" level="project" name="lib-tibco" />
+          <element id="library" level="project" name="log4j-1.2.15" />
+          <element id="library" level="project" name="mysql" />
+        </element>
+        <element id="file-copy" path="$PROJECT_DIR$/monitor.xml" />
+      </element>
+    </root>
+  </artifact>
+</component>

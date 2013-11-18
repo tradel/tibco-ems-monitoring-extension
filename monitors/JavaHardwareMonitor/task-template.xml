@@ -1,10 +1,12 @@
 <config>
+    <disk aggregate="true" enabled="true">/dev/disk1</disk>
     <disk aggregate="false" enabled="false">devfs</disk>
-    <disk aggregate="true" enabled="true">/dev/disk0s2</disk>
     <network aggregate="true" enabled="false">lo0</network>
+    <network aggregate="true" enabled="false">bridge0</network>
+    <network aggregate="true" enabled="false">en5</network>
+    <network aggregate="true" enabled="true">vnic0</network>
     <network aggregate="true" enabled="false">p2p0</network>
-    <network aggregate="true" enabled="true">vmnet1</network>
-    <network aggregate="true" enabled="false">en0</network>
-    <network aggregate="true" enabled="true">en1</network>
-    <network aggregate="true" enabled="true">vmnet8</network>
+    <network aggregate="true" enabled="true">vnic1</network>
+    <network aggregate="true" enabled="false">en4</network>
+    <network aggregate="true" enabled="true">en0</network>
 </config>

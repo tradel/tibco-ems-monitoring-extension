@@ -4,7 +4,7 @@
     <!-- This is the host name or the IP address of the AppDynamics Controller e.g. 192.168.1.22 or myhost or myhost.abc.com
     This is the same host that you use to access the AppDynamics browser based User interface.
     This can be overridden with the system property '-Dappdynamics.controller.hostName' -->
-    <controller-host>localhost</controller-host>
+    <controller-host>10.211.55.4</controller-host>
 
     <!-- This is the http(s) port of the AppDynamics Controller , If 'controller-ssl-enabled' below is set to true, you must
     specify the HTTPS port of the Controller, otherwise specify the HTTP port. The default values are 8090 for HTTP and 8181 for HTTPS
@@ -34,9 +34,9 @@
     already it will be created. If there is already a registered app server agent 
     installed on the same host as this machine agent then Auto Agent Registration 
     is not necessary for this machine agent. -->
-    <application-name></application-name>
-    <tier-name></tier-name>
-    <node-name></node-name>
+    <application-name>TibcoEMS</application-name>
+    <tier-name>TIBCO_EMS</tier-name>
+    <node-name>EMS Test Agent</node-name>
     
     <!-- Change to 'true' only under special circumstances where this agent has been moved to a new application and/or tier 
     from the UI but you want to override that move by specifying a new application name and/or tier name in the agent configuration. 

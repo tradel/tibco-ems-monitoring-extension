@@ -28,10 +28,10 @@ public class TibcoEMSMonitor3 extends JavaServersMonitor {
 	private volatile String password;
 	private volatile String hostname;
 	private volatile String port;
-	private String showTempQueues = "false";
-	private String showSysQueues =  "true";
-	Boolean showTempQueuesValue = new Boolean(false);
-	Boolean showSysQueuesValue = new Boolean(true);
+	private String showTempQueuesStr = "false";
+	private String showSysQueuesStr =  "false";
+	Boolean showTempQueues = Boolean.valueOf(showTempQueuesStr);
+	Boolean showSysQueues = Boolean.valueOf(showSysQueuesStr);
 
 	public TibcoEMSMonitor3() {
 		oldValueMap = Collections
@@ -42,7 +42,7 @@ public class TibcoEMSMonitor3 extends JavaServersMonitor {
 
 	protected void parseArgs(Map<String, String> args) {
 		super.parseArgs(args);
-		tierName = getArg(args, "tier", "tibcoems"); // if the tier is not specified
+		tierName = getArg(args, "tier", null); // if the tier is not specified
 												// then create the metrics for
 												// all tiers
 		userid = getArg(args, "userid", "admin");
@@ -50,10 +50,10 @@ public class TibcoEMSMonitor3 extends JavaServersMonitor {
 		hostname = getArg(args, "hostname", "localhost");
 		port = getArg(args, "port", "7222");
 		serverName = getArg(args, "emsservername", null);
-		showTempQueues = getArg(args, "showTempQueues", "false");
-		showSysQueues = getArg(args, "showSysQueues", "true");
-		showTempQueuesValue = new Boolean(showTempQueues);
-		showSysQueuesValue = new Boolean(showSysQueues);
+		showTempQueuesStr = getArg(args, "showTempQueues", "false");
+		showSysQueuesStr = getArg(args, "showSysQueues", "true");
+		showTempQueues = Boolean.valueOf(showTempQueuesStr);
+		showSysQueues = Boolean.valueOf(showSysQueuesStr);
 
 		
 
@@ -155,7 +155,7 @@ public class TibcoEMSMonitor3 extends JavaServersMonitor {
 
 			QueueInfo[] queueInfos = null;
 			ProducerInfo[] producerInfos = null;
-			
+
 			try {
 				producerInfos = conn.getProducersStatistics();
 				if (debug) {
@@ -190,15 +190,20 @@ public class TibcoEMSMonitor3 extends JavaServersMonitor {
 					QueueInfo queueInfo = queueInfos[i];
                     String queueName = queueInfo.getName();
 
-                    if ( queueName.startsWith("$TMP$.") || queueName.startsWith("$sys."))
+                    if (queueName.startsWith("$TMP$.") && !showTempQueues)
+                    {
+                        logger.info("Skipping temporary queue " + queueName);
+                    }
+                    else if (queueName.startsWith("$sys.") && !showSysQueues)
                     {
                         logger.info("Skipping system queue " + queueName);
                     }
                     else
                     {
+                        logger.info("Publishing metrics for queue " + queueName);
+
                         putQueueValue(map, queueName, "ConsumerCount", queueInfo.getConsumerCount());
-                        putQueueValue(map, queueName, "DeliveredMessageCount", queueInfo.getDeliveredMessageCount());
-                        putQueueValue(map, queueName, "ConsumerCount", queueInfo.getFlowControlMaxBytes());
+                        putQueueValue(map, queueName, "InTransitCount", queueInfo.getInTransitMessageCount());
                         putQueueValue(map, queueName, "PendingMessageCount", queueInfo.getPendingMessageCount());
                         putQueueValue(map, queueName, "FlowControlMaxBytes", queueInfo.getFlowControlMaxBytes());
                         putQueueValue(map, queueName, "MaxMsgs", queueInfo.getMaxMsgs());
@@ -215,7 +220,7 @@ public class TibcoEMSMonitor3 extends JavaServersMonitor {
                         putQueueValue(map, queueName, "InboundMessageCount", inboundData.getTotalMessages());
 
                         // Outbound metrics
-                        StatData outboundData = queueInfo.getInboundStatistics();
+                        StatData outboundData = queueInfo.getOutboundStatistics();
                         putQueueValue(map, queueName, "OutboundByteRate", outboundData.getByteRate());
                         putQueueValue(map, queueName, "OutboundMessageRate", outboundData.getMessageRate());
                         putQueueValue(map, queueName, "OutboundByteCount", outboundData.getTotalBytes());
@@ -226,7 +231,8 @@ public class TibcoEMSMonitor3 extends JavaServersMonitor {
 
 				}
 			}
-			System.out.println("Closing Connection to Server");
+
+            logger.info("Closing connection to EMS server");
 			conn.close();
 		}
 		catch (com.tibco.tibjms.admin.TibjmsAdminException ex) {
@@ -235,11 +241,7 @@ public class TibcoEMSMonitor3 extends JavaServersMonitor {
 	    }
 		catch (Exception ex) {
 			logger.error("Error getting performance data from Tibco EMS", ex);
-			throw ex;
 	    }
-		finally {
-		   conn.close();
-		}
 		return Collections.synchronizedMap(map);
 	}
 
@@ -287,10 +289,18 @@ public class TibcoEMSMonitor3 extends JavaServersMonitor {
 	protected String getMetricPrefix() {
 		logger.debug("Tier Name is " + tierName);
 		if (tierName != null) {
-			return "Custom Metrics|" + tierName + "|" + serverName +"|";
+            if (serverName != null) {
+    			return "Custom Metrics|" + tierName + "|" + serverName +"|";
+            } else {
+                return "Custom Metrics|" + tierName + "|";
+            }
 		} else {
 			return "Custom Metrics|Tibco EMS Server|";
 		}
 	}
+
+    public static void main(String[] args) throws TaskExecutionException {
+        new TibcoEMSMonitor3().execute(null, null);
+    }
 
 }

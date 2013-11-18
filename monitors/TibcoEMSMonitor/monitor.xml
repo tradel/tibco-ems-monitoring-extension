@@ -15,25 +15,28 @@
 		
 		<!--  
 		
-		Admin EMS for Hawk EMS Destinations GTIC : tcp://tparhetibu027.nielsen.com:57223
-		CLE : tcp://tparhetibu027.nielsen.com:57225
-		AOD App EMS :tcp://tparhetibu034.nielsen.com:57222
+		Make sure you change the following arguments:
 		
+		hostname: name or IP address of the Tibco EMS server
+		port: admin port
+		userid: user ID
+		password: password
+		tier: tier name you want the metrics reported under
 		
-		 -->
+		-->
 		
 		<task-arguments>
-			<argument name="hostname" is-required="true" default-value="hughsmac" />
+			<argument name="hostname" is-required="true" default-value="10.211.55.4" />
 			<argument name="port" is-required="true" default-value="7222" />		
 			<argument name="userid" is-required="true" default-value="admin" />
-			<argument name="password" is-required="true" default-value="admin" />
-			<!--argument name="tier" is-required="false" default-value="TIBCOEMS" /-->	
-			<argument name="showTempQueues" is-required="false" default-value="FALSE" />	
-			<argument name="showSysQueues" is-required="false" default-value="TRUE" />	
-			<argument name="emsservername" is-required="false" default-value="Tibco EMS Hughes Mac" />	
+			<argument name="password" is-required="true" default-value="" />
+			<argument name="tier" is-required="false" default-value="TIBCO_EMS" />	
+			<argument name="emsservername" is-required="false" default-value="Tibco EMS Destinations" />
+            <argument name="showTempQueues" is-required="false" default-value="false" />
+            <argument name="showSysQueues" is-required="false" default-value="false" />
 		</task-arguments>
 		<java-task>
-			 <classpath>../../bin:../../lib/mysql.jar:../../machineagent.jar:../../lib/jms.jar:../../lib-tibco/slf4j-api-1.4.2.jar:../../lib-tibco/slf4j-simple-1.4.2.jar:../../lib-tibco/tibcrypt.jar:../../lib-tibco/tibemsd_sec.jar:../../lib-tibco/tibjms.jar:../../lib-tibco/tibjmsadmin.jar:../../lib-tibco/tibjmsapps.jar:../../lib-tibco/tibjmsufo.jar:../../lib-tibco/tibrvjms.jar</classpath>
+            <classpath>TibcoEMSMonitor.jar:lib/mysql.jar:lib/machineagent.jar:lib/jms.jar:lib/slf4j-api-1.4.2.jar:lib/slf4j-simple-1.4.2.jar:lib/tibcrypt.jar:lib/tibemsd_sec.jar:lib/tibjms.jar:lib/tibjmsadmin.jar:lib/tibjmsapps.jar:lib/tibjmsufo.jar:lib/tibrvjms.jar</classpath>
 			<impl-class>com.singularity.ee.agent.systemagent.monitors.common.TibcoEMSMonitor3</impl-class>
 		</java-task>
 	</monitor-run-task>

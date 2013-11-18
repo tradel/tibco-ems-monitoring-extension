@@ -14,6 +14,7 @@
     <orderEntry type="library" name="lib-jms" level="project" />
     <orderEntry type="library" name="machineagent" level="project" />
     <orderEntry type="library" name="log4j-1.2.15" level="project" />
+    <orderEntry type="library" name="mysql" level="project" />
   </component>
 </module>
 

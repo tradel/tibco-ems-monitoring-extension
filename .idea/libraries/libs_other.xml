@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="libs-other">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs-other/log4j-1.2.15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs-other/singularity-xml.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs-other/mysql.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs-other/mysql-connector-java-5.1.17-bin.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
