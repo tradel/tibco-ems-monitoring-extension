@@ -1,10 +1,3 @@
-Title:       Tibco EMS plugin for AppDynamics machine agent
-Author:      Todd Radel
-Affiliation: AppDynamics Inc.
-Email:       tradel@appdynamics.com
-Date:        7 November 2013
-CSS:         /Applications/Marked.app/Contents/Resources/swiss.css
-
 TibcoEMSMonitor
 ===============
 
