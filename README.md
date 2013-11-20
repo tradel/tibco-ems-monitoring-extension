@@ -3,6 +3,7 @@ Author:      Todd Radel
 Affiliation: AppDynamics Inc.
 Email:       tradel@appdynamics.com
 Date:        7 November 2013
+CSS:         /Applications/Marked.app/Contents/Resources/swiss.css
 
 TibcoEMSMonitor
 ===============
@@ -18,46 +19,44 @@ This eXtension requires the Java Machine Agent.
 
 ## Prerequisites
 
-Before starting this monitor, make sure your EMS server is configured to report statistics. You can do this by editing the `tibemsd.conf` file in `TIBCO_HOME`, or by using the `tibemsadmin` command line utility:
+Before starting this monitor, make sure your EMS server is configured to report statistics. You can do this by editing the file `tibemsd.conf` in your `TIBCO_HOME`, or by using the `tibemsadmin` command line utility.
 
-### Editing tibemsd.conf
+#### Configuring statistics by editing tibemsd.conf
 
 1. Add the following line to `tibemsd.conf`:
-```
-statistics = enabled
-```
+
+        statistics = enabled
+
 1. Restart Tibco EMS.
 
-### Using the command line
+#### Configuring statistics using the command line
 
 Use the `tibemsadmin` utility to change the server configuration.
 
-```
-root# tibemsadmin -server localhost:7222
+        root# tibemsadmin -server localhost:7222
 
-TIBCO Enterprise Message Service Administration Tool.
-Copyright 2003-2013 by TIBCO Software Inc.
-All rights reserved.
+        TIBCO Enterprise Message Service Administration Tool.
+        Copyright 2003-2013 by TIBCO Software Inc.
+        All rights reserved.
 
-Version 8.0.0 V9 6/7/2013
+        Version 8.0.0 V9 6/7/2013
 
-Login name (admin):
-Password:
-Connected to: tcp://localhost:7222
-Type 'help' for commands help, 'exit' to exit:
-tcp://localhost:7222> set server statistics=enabled
-Server parameters have been changed
-tcp://localhost:7222> quit
-bye
-```
+        Login name (admin):
+        Password:
+        Connected to: tcp://localhost:7222
+        Type 'help' for commands help, 'exit' to exit:
+        tcp://localhost:7222> set server statistics=enabled
+        Server parameters have been changed
+        tcp://localhost:7222> quit
+        bye
 
 
 ## Installation
 
 1. Download TibcoEMSMonitor.zip from AppSphere.
-1. Copy TibcoEMSMonitor.zip into the directory where you installed the machine agent, under `$INSTALL_HOME/monitors`.
+1. Copy TibcoEMSMonitor.zip into the directory where you installed the machine agent, under `$AGENT_HOME/monitors`.
 1. Unzip the file. This will create a new directory called `TibcoEMSMonitor`.
-1. In `$INSTALL_HOME/monitors/TibcoEMSMonitor`, edit the file `monitor.xml` and configure the plugin for your Tibco EMS installation.
+1. In `$AGENT_HOME/monitors/TibcoEMSMonitor`, edit the file `monitor.xml` and configure the plugin for your Tibco EMS installation.
 1. Restart the machine agent.
 
 ## Configuration
@@ -74,7 +73,7 @@ userid
 : Administrative user ID for the Tibco admin interface. The default value is "admin". Required.
 
 password
-: Password for the administratie user ID. The default value is an empty password. Required.
+: Password for the administrative user ID. The default value is an empty password. Required.
 
 tier
 : Name of the tier in AppDynamics for which the monitor should register its metrics. If not specified, the metrics will be registered on all tiers. Optional.
@@ -156,10 +155,13 @@ For any questions or feature requests, please contact the [AppDynamics Center of
 **Last Updated:** 11/17/2013
 **Author:** Todd Radel
 
+------------------------------------------------------------------------------
+
 ## Release Notes
 
 ### Version 2.1.1
 - Added inbound and outbound message/byte count and rate for each queue.
+- General code cleanup.
 - Re-released to AppSphere.
 
 [Tibco EMS server]: http://www.tibco.com/products/automation/messaging/enterprise-messaging/enterprise-message-service/default.jsp

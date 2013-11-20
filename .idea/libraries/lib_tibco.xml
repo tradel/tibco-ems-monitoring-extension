@@ -1,16 +1,16 @@
 <component name="libraryTable">
   <library name="lib-tibco">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib-tibco/tibjms.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib-tibco/tibrvjms.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib-tibco/tibjmsufo.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib-tibco/tibcrypt.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib-tibco/tibemsd_sec.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib-tibco/tibjmsapps.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib-tibco/tibjmsufo.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib-tibco/tibrvjms.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib-tibco/slf4j-simple-1.4.2.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib-tibco/jms.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib-tibco/tibjms.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib-tibco/slf4j-api-1.4.2.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib-tibco/tibjmsadmin.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib-tibco/tibemsd_sec.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib-tibco/tibcrypt.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

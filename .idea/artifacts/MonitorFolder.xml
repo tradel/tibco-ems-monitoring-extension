@@ -1,18 +1,15 @@
 <component name="ArtifactManager">
-  <artifact build-on-make="true" name="MonitorFolder">
+  <artifact name="MonitorFolder">
     <output-path>$PROJECT_DIR$/monitors/TibcoEMSMonitor</output-path>
     <root id="root">
       <element id="directory" name="lib">
-        <element id="library" level="project" name="lib-jms" />
         <element id="library" level="project" name="lib-tibco" />
         <element id="library" level="project" name="log4j-1.2.15" />
         <element id="file-copy" path="$PROJECT_DIR$/monitor.xml" />
         <element id="library" level="project" name="mysql" />
       </element>
       <element id="file-copy" path="$PROJECT_DIR$/monitor.xml" />
-      <element id="archive" name="TibcoEMSMonitor.jar">
-        <element id="module-output" name="TibcoEMSMonitor" />
-      </element>
+      <element id="artifact" artifact-name="TibcoEMSMonitor:jar" />
     </root>
   </artifact>
 </component>

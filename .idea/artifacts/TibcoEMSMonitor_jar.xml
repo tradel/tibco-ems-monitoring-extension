@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact name="TibcoEMSMonitor:jar">
+    <output-path>$PROJECT_DIR$/bin/artifacts/TibcoEMSMonitor_jar</output-path>
+    <root id="root">
+      <element id="archive" name="TibcoEMSMonitor.jar">
+        <element id="module-output" name="TibcoEMSMonitor" />
+      </element>
+    </root>
+  </artifact>
+</component>

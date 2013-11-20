@@ -92,8 +92,8 @@ public class TibcoEMSMonitor3 extends JavaServersMonitor {
 
 	private TibjmsAdmin connect() throws TibjmsAdminException {
 
-		logger.debug("Connecting to tcp://" + hostname + ":"+ port + " " +  userid + " " + password);
-		TibjmsAdmin tibcoAdmin = new TibjmsAdmin("tcp://" + hostname + ":"+ port, userid, password);
+		logger.debug("Connecting to tcp://" + hostname + ":" + port + " " +  userid + " " + password);
+		TibjmsAdmin tibcoAdmin = new TibjmsAdmin("tcp://" + hostname + ":" + port, userid, password);
 		
 		return tibcoAdmin;
 	}
@@ -253,7 +253,7 @@ public class TibcoEMSMonitor3 extends JavaServersMonitor {
         try {
         	Thread.sleep(5000);
 		} catch (Exception e) {
-			
+            logger.error("Sleep was interrupted", e);
 		}
 		// just for debug output
 		logger.debug("Starting METRIC COLLECTION for Tibco EMS Monitor.......");
@@ -268,8 +268,7 @@ public class TibcoEMSMonitor3 extends JavaServersMonitor {
 				printMetric(key, value);
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+            logger.error("Error uploading metrics: " + e.getMessage(), e);
 		}
 
 		return this.finishExecute();
