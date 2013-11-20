@@ -150,10 +150,10 @@ Please note that the maximum value you can provide is 5000.
 
 For any questions or feature requests, please contact the [AppDynamics Center of Excellence][].
 
-**Version:** 2.1.1
-**Controller Compatibility:** 3.6 or later
-**Last Updated:** 11/17/2013
-**Author:** Todd Radel
+**Version:** 2.1.1  
+**Controller Compatibility:** 3.6 or later  
+**Last Updated:** 11/17/2013  
+**Author:** Todd Radel  
 
 ------------------------------------------------------------------------------
 
